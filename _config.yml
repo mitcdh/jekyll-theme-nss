@@ -1,0 +1,8 @@
+# Site settings
+title: NSS Theme for Jekyll
+description: NSS Jekyll is a single-page theme for Jekyll designed to display a markdown document in a similar theme to IAEA Safety Standards and Security Guidance.
+
+markdown: kramdown
+exclude: ["README.md"]
+sass:
+  style: compressed

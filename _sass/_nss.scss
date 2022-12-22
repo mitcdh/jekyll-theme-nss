@@ -1,0 +1,108 @@
+/* Styles recreated from 'Template for IAEA Safety Standards and Nuclear Security Guidance 20-06-26.docx' */
+
+html {
+  font: 11pt "Times New Roman", Times, serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  color: black;
+  background-color: lightgray;
+}
+
+
+.document-container {
+  max-width: 16cm;
+  margin: 0 auto;
+  padding: 2.54cm;
+  background-color: white;
+}
+
+h1 {
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 18pt;
+  margin-bottom: 24pt;
+  font-size: 12pt;
+  text-indent: 0.51cm;
+}
+h2 {
+  text-transform: uppercase;
+  font-weight: normal;
+  margin-top: 12pt;
+  margin-bottom: 12pt;
+  font-size: 12pt;
+}
+h3 {
+  font-weight: bold;
+  margin-top: 12pt;
+  margin-bottom: 12pt;
+  font-size: 12pt;
+}
+h4 {
+  font-style: italic;
+  font-weight: normal;
+  margin-top: 12pt;
+  margin-bottom: 12pt;
+  font-size: 12pt;
+}
+ul {
+  margin-left: 0.63cm;
+  margin-bottom: 0cm;
+  list-style: '— ';
+}
+
+/* Tables with 1px lines on top, bottom of header, and bottom */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+th {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-weight: normal;
+  text-align: center;
+}
+
+/* Counters for H1 and Paragraphs */
+body { counter-reset: h1counter; }
+h1 { counter-reset: pcounter; }
+h1::before {
+  counter-increment: h1counter;
+  content: counter(h1counter) ".\0000a0\0000a0";
+}
+p::before {
+  counter-increment: pcounter;
+  content: counter(h1counter) "." counter(pcounter) ".\0000a0\0000a0";
+}
+
+/* Top-level ordered lists in lower-alpha and parentheses */
+ol {
+counter-reset: list;
+margin-left: 0cm;
+margin-bottom: 3pt;
+}
+ol > li {
+list-style: none;
+}
+ol > li::before {
+content: "(" counter(list, lower-alpha) ") ";
+counter-increment: list;
+}
+
+/* Second-level ordered lists in lower-roman and parentheses */
+ol ol {
+counter-reset: sublist;
+margin-left: 0cm;
+margin-bottom: 3pt;
+}
+ol ol > li {
+list-style: none;
+}
+ol ol > li::before {
+content: "(" counter(sublist, lower-roman) ") ";
+counter-increment: sublist;
+}
