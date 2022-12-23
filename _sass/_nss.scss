@@ -72,37 +72,61 @@ body { counter-reset: h1counter; }
 h1 { counter-reset: pcounter; }
 h1::before {
   counter-increment: h1counter;
-  content: counter(h1counter) ".\0000a0\0000a0";
+  content: counter(h1counter) ".";
 }
 p::before {
   counter-increment: pcounter;
-  content: counter(h1counter) "." counter(pcounter) ".\0000a0\0000a0";
+  content: counter(h1counter) "." counter(pcounter) ".";
 }
 
 /* Top-level ordered lists in lower-alpha and parentheses */
 ol {
-counter-reset: list;
-margin-left: 0cm;
-margin-bottom: 3pt;
+  counter-reset: list;
+  margin-left: 0cm;
+  margin-bottom: 3pt;
+  list-style-position: outside;
 }
 ol > li {
-list-style: none;
+  list-style: none;
+  counter-increment: list;
 }
-ol > li::before {
-content: "(" counter(list, lower-alpha) ") ";
-counter-increment: list;
+ol > li::marker {
+  content: "(" counter(list, lower-alpha) ")\2003";
 }
 
 /* Second-level ordered lists in lower-roman and parentheses */
 ol ol {
-counter-reset: sublist;
-margin-left: 0cm;
-margin-bottom: 3pt;
+  counter-reset: sublist;
+  margin-left: 0cm;
+  margin-bottom: 3pt;
+  list-style-position: outside;
 }
 ol ol > li {
-list-style: none;
+  list-style: none;
+  counter-increment: sublist;
 }
-ol ol > li::before {
-content: "(" counter(sublist, lower-roman) ") ";
-counter-increment: sublist;
+ol ol > li::marker {
+  content: "(" counter(sublist, lower-roman) ")\2003";
+}
+
+/* Footnote specific styling */
+div.footnotes > ol {
+  counter-reset: fnlist;
+  margin-left: 0cm;
+  margin-bottom: 3pt;
+  list-style-position: outside;
+}
+div.footnotes > ol > li {
+  list-style: none;
+  counter-increment: fnlist;
+}
+div.footnotes > ol > li::marker {
+  content: "[" counter(fnlist, decimal) "]\2003";
+}
+div.footnotes > ol > li > p::before {
+  counter-increment: none;
+  content: normal;
+}
+div.footnotes > ol > li > p {
+  display: inline;
 }
