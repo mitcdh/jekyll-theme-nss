@@ -72,11 +72,11 @@ body { counter-reset: h1counter; }
 h1 { counter-reset: pcounter; }
 h1::before {
   counter-increment: h1counter;
-  content: counter(h1counter) ".";
+  content: counter(h1counter) ".\a0";
 }
 p::before {
   counter-increment: pcounter;
-  content: counter(h1counter) "." counter(pcounter) ".";
+  content: counter(h1counter) "." counter(pcounter) ".\a0\a0";
 }
 
 /* Top-level ordered lists in lower-alpha and parentheses */
