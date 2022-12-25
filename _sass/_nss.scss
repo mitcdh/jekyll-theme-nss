@@ -8,6 +8,9 @@ html {
 body {
   color: black;
   background-color: lightgray;
+  counter-reset: figcounter;
+  counter-reset: h1counter;
+  counter-reset: fncounter;
 }
 
 
@@ -68,65 +71,90 @@ th {
 }
 
 /* Counters for H1 and Paragraphs */
-body { counter-reset: h1counter; }
-h1 { counter-reset: pcounter; }
-h1::before {
+h1 {
+  counter-reset: pcounter;
   counter-increment: h1counter;
+}
+p {
+  counter-increment: pcounter;
+}
+h1::before {
   content: counter(h1counter) ".\a0";
 }
 p::before {
-  counter-increment: pcounter;
   content: counter(h1counter) "." counter(pcounter) ".\a0\a0";
 }
 
 /* Top-level ordered lists in lower-alpha and parentheses */
 ol {
-  counter-reset: list;
+  counter-reset: listcounter;
   margin-left: 0cm;
   margin-bottom: 3pt;
   list-style-position: outside;
 }
 ol > li {
   list-style: none;
-  counter-increment: list;
+  counter-increment: listcounter;
 }
 ol > li::marker {
-  content: "(" counter(list, lower-alpha) ")\2003";
+  content: "(" counter(listcounter, lower-alpha) ")\2003";
 }
 
 /* Second-level ordered lists in lower-roman and parentheses */
 ol ol {
-  counter-reset: sublist;
+  counter-reset: sublistcounter;
   margin-left: 0cm;
   margin-bottom: 3pt;
   list-style-position: outside;
 }
 ol ol > li {
   list-style: none;
-  counter-increment: sublist;
+  counter-increment: sublistcounter;
 }
 ol ol > li::marker {
-  content: "(" counter(sublist, lower-roman) ")\2003";
+  content: "(" counter(sublistcounter, lower-roman) ")\2003";
 }
 
 /* Footnote specific styling */
 div.footnotes > ol {
-  counter-reset: fnlist;
+  counter-reset: fncounter;
   margin-left: 0cm;
   margin-bottom: 3pt;
   list-style-position: outside;
 }
 div.footnotes > ol > li {
   list-style: none;
-  counter-increment: fnlist;
+  counter-increment: fncounter;
 }
 div.footnotes > ol > li::marker {
-  content: "[" counter(fnlist, decimal) "]\2003";
+  content: "[" counter(fncounter, decimal) "]\2003";
 }
 div.footnotes > ol > li > p::before {
-  counter-increment: none;
   content: normal;
 }
 div.footnotes > ol > li > p {
   display: inline;
+}
+
+/* image and figure styling */ 
+img {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  counter-increment: figcounter;
+}
+p:has(img) {
+  counter-increment: none;
+  margin: auto;
+  text-align: center;
+}
+p:has(img)::before {
+  content: normal;
+}
+img + em {
+  font-style: italic;
+  font-weight: normal;
+}
+img + em::before {
+  content: "FIG.\a0" counter(figcounter, decimal) ".\a0";
 }
