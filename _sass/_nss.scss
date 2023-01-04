@@ -1,10 +1,5 @@
 /* Styles recreated from 'Template for IAEA Safety Standards and Nuclear Security Guidance 20-06-26.docx' */
 
-html {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 12pt;
-}
-
 body {
   color: black;
   background-color: lightgray;
@@ -15,7 +10,10 @@ body {
 
 
 .document-container {
-  max-width: 21cm;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 12pt;
+  text-align: justify;
+  max-width: 16cm;
   margin: 0 auto;
   padding: 2.54cm;
   background-color: white;
