@@ -15,7 +15,7 @@ body {
 
 
 .document-container {
-  max-width: 16cm;
+  max-width: 21cm;
   margin: 0 auto;
   padding: 2.54cm;
   background-color: white;
@@ -157,4 +157,15 @@ img + em {
 }
 img + em::before {
   content: "FIG.\a0" counter(figcounter, decimal) ".\a0";
+}
+
+// Styles for printing, expand the doc container and set a page margin.
+@media print {
+  .document-container {
+    max-width: 100%;
+    padding: 0;
+  }
+}
+@page {
+  margin: 2.54cm;
 }
