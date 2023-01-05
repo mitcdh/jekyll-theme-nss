@@ -1,22 +1,21 @@
 /* Styles recreated from 'Template for IAEA Safety Standards and Nuclear Security Guidance 20-06-26.docx' */
 
 body {
+  font-family: "Times New Roman", Times, serif;
+  font-size:  10.5pt;
+  text-align: justify;
+  margin: 0;
   color: black;
-  background-color: lightgray;
   counter-reset: figcounter;
   counter-reset: h1counter;
   counter-reset: fncounter;
 }
 
-
+// doc-container is width-defined to resemble the 16x24cm print
 .document-container {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 12pt;
-  text-align: justify;
-  max-width: 16cm;
-  margin: 0 auto;
-  padding: 2.54cm;
-  background-color: white;
+  width: 16cm;
+  padding: 22mm 20mm 29.7mm;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -25,7 +24,7 @@ h1 {
   font-weight: bold;
   margin-top: 18pt;
   margin-bottom: 24pt;
-  font-size: 12pt;
+  font-size:  12.5pt;
   text-indent: 0.51cm;
 }
 h2 {
@@ -33,20 +32,23 @@ h2 {
   font-weight: normal;
   margin-top: 12pt;
   margin-bottom: 12pt;
-  font-size: 12pt;
+  font-size:  10.5pt;
+  text-align: left;
 }
 h3 {
   font-weight: bold;
   margin-top: 12pt;
   margin-bottom: 12pt;
-  font-size: 12pt;
+  font-size:  10.5pt;
+  text-align: left;
 }
 h4 {
   font-style: italic;
   font-weight: normal;
   margin-top: 12pt;
   margin-bottom: 12pt;
-  font-size: 12pt;
+  font-size:  10.5pt;
+  text-align: left;
 }
 ul {
   margin-left: 0.63cm;
@@ -114,6 +116,16 @@ ol ol > li::marker {
 }
 
 /* Footnote specific styling */
+sup[role=doc-noteref] {
+  vertical-align: inherit;
+  font-size: inherit;
+}
+sup[role=doc-noteref]:before {
+  content: '[';
+}
+sup[role=doc-noteref]:after {
+  content: ']';
+}
 div.footnotes > ol {
   counter-reset: fncounter;
   margin-left: 0cm;
@@ -158,12 +170,24 @@ img + em::before {
 }
 
 // Styles for printing, expand the doc container and set a page margin.
+@media screen {
+  body {
+    background-color: lightgray
+  }
+  .document-container {
+    background-color: white;
+    box-shadow: 0 .5mm 2mm rgba(0,0,0,.3);
+    margin: 0 auto;
+  }
+}
 @media print {
   .document-container {
     max-width: 100%;
+    width: auto;
     padding: 0;
   }
 }
 @page {
-  margin: 2.54cm;
+  size: A4;
+  margin: 22mm 20mm 29.7mm;
 }
